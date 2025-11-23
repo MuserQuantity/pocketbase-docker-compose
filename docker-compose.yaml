@@ -4,7 +4,9 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        VERSION: ${PB_VERSION:-0.23.0}
+        VERSION: ${PB_VERSION:-0.34.0}
+        ALPINE_MIRROR: ${ALPINE_MIRROR:-}
+        PB_DOWNLOAD_BASE: ${PB_DOWNLOAD_BASE:-}
     container_name: pocketbase
     restart: unless-stopped
     env_file:

@@ -8,16 +8,19 @@ Docker Compose setup for PocketBase with data persistence and optional admin boo
 3. Open the Admin UI at `http://localhost:8090/_/` (or your chosen `PB_PORT`)
 
 ## What’s included
-- PocketBase container (`ghcr.io/muchobien/pocketbase:latest`) with restart policy and healthcheck.
+- PocketBase container built from the included Dockerfile (version via `PB_VERSION`) with restart policy and healthcheck.
 - Data persistence via `./pb_data`, `./pb_public`, and `./pb_hooks` volumes.
 - Environment-driven host/port, optional admin user bootstrap, optional settings encryption, and timezone support.
 
 ## Environment variables (`.env`)
+- `PB_VERSION` (default `0.34.0`): PocketBase version downloaded at build time.
 - `PB_HOST` (default `0.0.0.0`): Bind address inside the container.
 - `PB_PORT` (default `8090`): Port exposed by PocketBase and mapped on the host.
 - `PB_ADMIN_EMAIL` / `PB_ADMIN_PASSWORD` (optional): Auto create/update a superuser when the server starts.
 - `ENCRYPTION` (optional): 32-character key to enable settings encryption (`openssl rand -hex 16`). When set, the container automatically adds `--encryptionEnv ENCRYPTION`.
 - `TZ` (default `UTC`): Container timezone.
+- `ALPINE_MIRROR` (optional): Override the Alpine package mirror for faster builds (useful in CN networks).
+- `PB_DOWNLOAD_BASE` (optional): Override the PocketBase download base URL (e.g., via a GitHub proxy).
 
 ## Useful commands
 - Start/stop: `docker compose up -d` / `docker compose down`
@@ -30,7 +33,7 @@ Docker Compose setup for PocketBase with data persistence and optional admin boo
 If you prefer to build your own image/version:
 ```bash
 # Build with a specific PocketBase version
-docker build --build-arg VERSION=0.23.0 -t my-pocketbase .
+docker build --build-arg VERSION=0.34.0 -t my-pocketbase .
 
 # Build with the Dockerfile default version
 docker build -t my-pocketbase:dev .
