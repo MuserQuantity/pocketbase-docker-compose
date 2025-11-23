@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        VERSION: ${PB_VERSION:-0.23.0}
     container_name: pocketbase
     restart: unless-stopped
     env_file:
