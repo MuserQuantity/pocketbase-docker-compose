@@ -18,7 +18,7 @@ Docker Compose setup for PocketBase with data persistence and optional admin boo
 - `PB_PORT` (default `8090`): Port exposed by PocketBase and mapped on the host.
 - `PB_ADMIN_EMAIL` / `PB_ADMIN_PASSWORD` (optional): Auto create/update a superuser when the server starts.
 - `ENCRYPTION` (optional): 32-character key to enable settings encryption (`openssl rand -hex 16`). When set, the container automatically adds `--encryptionEnv ENCRYPTION`.
-- `TZ` (default `UTC`): Container timezone.
+- `TZ` (default `UTC+8`): Container timezone.
 - `ALPINE_MIRROR` (optional): Override the Alpine package mirror for faster builds (useful in CN networks).
 - `PB_DOWNLOAD_BASE` (optional): Override the PocketBase download base URL (e.g., via a GitHub proxy).
 
