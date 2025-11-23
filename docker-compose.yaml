@@ -17,7 +17,7 @@ services:
       PB_ADMIN_EMAIL: ${PB_ADMIN_EMAIL:-}
       PB_ADMIN_PASSWORD: ${PB_ADMIN_PASSWORD:-}
       ENCRYPTION: ${ENCRYPTION:-}
-      TZ: ${TZ:-UTC+8}
+      TZ: ${TZ:-UTC}
     ports:
       - "${PB_PORT:-8090}:${PB_PORT:-8090}"
     volumes:
